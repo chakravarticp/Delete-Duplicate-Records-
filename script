@@ -1,0 +1,18 @@
+void invoiceduplicate()
+{
+	for each  rec in Invoice
+	{
+		fet = Invoice[Invoice_Number == rec.Invoice_Number] sort by Added_Time desc;
+		a = fet.ID;
+		b = fet.ID.getall();
+		lis = List();
+		for each  rec1 in b
+		{
+			if(rec1 != a)
+			{
+				lis.add(rec1);
+			}
+		}
+		delete from Invoice[ID in lis];
+	}
+}
